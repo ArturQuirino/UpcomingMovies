@@ -12,4 +12,13 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />  
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\MovieDetailPage.xaml.cs">
+      <DependentUpon>MovieDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MoviesPage.xaml.cs">
+      <DependentUpon>MoviesPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

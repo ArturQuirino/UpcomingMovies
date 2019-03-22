@@ -14,24 +14,24 @@ using UpcomingMovies.ViewModels;
 namespace UpcomingMovies.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ItemsPage : ContentPage
+    public partial class MoviesPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        MoviesViewModel viewModel;
 
-        public ItemsPage()
+        public MoviesPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new MoviesViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
+            var item = args.SelectedItem as Movie;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new MovieDetailPage(new MovieDetailViewModel(item)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;

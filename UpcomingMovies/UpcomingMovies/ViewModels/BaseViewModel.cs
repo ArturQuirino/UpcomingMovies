@@ -12,7 +12,7 @@ namespace UpcomingMovies.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<Movie> DataStore => DependencyService.Get<IDataStore<Movie>>() ?? new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

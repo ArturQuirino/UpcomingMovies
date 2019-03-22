@@ -9,28 +9,28 @@ using UpcomingMovies.ViewModels;
 namespace UpcomingMovies.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ItemDetailPage : ContentPage
+    public partial class MovieDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        MovieDetailViewModel viewModel;
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public MovieDetailPage(MovieDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        public ItemDetailPage()
+        public MovieDetailPage()
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Movie
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                Title = "Item 1",
+                ReleaseDate = "21/02/2019"
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new MovieDetailViewModel(item);
             BindingContext = viewModel;
         }
     }
