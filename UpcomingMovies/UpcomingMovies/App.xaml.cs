@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using UpcomingMovies.Views;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.ServiceLocation;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace UpcomingMovies
@@ -11,11 +13,13 @@ namespace UpcomingMovies
 
         public App()
         {
+            BootStrapperIoC.Init();
             InitializeComponent();
 
 
             MainPage = new MainPage();
         }
+        
 
         protected override void OnStart()
         {

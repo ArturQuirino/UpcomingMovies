@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace UpcomingMovies.Services.Responses
+namespace UpcomingMovies.Models.Responses
 {
     [DataContract]
     public class MoviesResponse

@@ -10,6 +10,7 @@ namespace UpcomingMovies.Models
         public string Title { get; set; }
         public string PosterPath { get; set; }
         public List<int> GenreIds { get; set; }
+        public string GenreNames { get; set; }
         public string ReleaseDate { get; set; }
         public string Overview { get; set; }
     }

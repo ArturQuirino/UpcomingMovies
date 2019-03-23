@@ -23,14 +23,7 @@ namespace UpcomingMovies.Views
         public MovieDetailPage()
         {
             InitializeComponent();
-
-            var item = new Movie
-            {
-                Title = "Item 1",
-                ReleaseDate = "21/02/2019"
-            };
-
-            viewModel = new MovieDetailViewModel(item);
+            
             BindingContext = viewModel;
         }
     }

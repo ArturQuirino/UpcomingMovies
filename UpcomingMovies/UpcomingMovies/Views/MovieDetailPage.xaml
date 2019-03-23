@@ -4,9 +4,11 @@
              x:Class="UpcomingMovies.Views.MovieDetailPage"
              Title="{Binding Title}">
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Item.Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Item.Description}" FontSize="Small"/>
+        <Label Text="Title:" FontSize="Medium" />
+        <Label Text="{Binding Item.Title}" FontSize="Small"/>
+        <Label Text="Overview:" FontSize="Medium" />
+        <Label Text="{Binding Item.Overview}" FontSize="Small"/>
+        <Label Text="Release Date:" FontSize="Medium" />
+        <Label Text="{Binding Item.ReleaseDate}" FontSize="Small"/>
     </StackLayout>
 </ContentPage>

@@ -10,19 +10,25 @@ using Xamarin.Forms.Xaml;
 using UpcomingMovies.Models;
 using UpcomingMovies.Views;
 using UpcomingMovies.ViewModels;
+using Microsoft.Practices.ServiceLocation;
 
 namespace UpcomingMovies.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MoviesPage : ContentPage
     {
-        MoviesViewModel viewModel;
-
         public MoviesPage()
         {
             InitializeComponent();
+            BindingContext = ServiceLocator.Current.GetInstance<MoviesViewModel>();
+        }
 
-            BindingContext = viewModel = new MoviesViewModel();
+        public MoviesViewModel MoviesViewModel
+        {
+            get
+            {
+                return (MoviesViewModel)BindingContext;
+            }
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -34,20 +40,16 @@ namespace UpcomingMovies.Views
             await Navigation.PushAsync(new MovieDetailPage(new MovieDetailViewModel(item)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-        }
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            MoviesListView.SelectedItem = null;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (MoviesViewModel.Movies.Count == 0)
+                MoviesViewModel.LoadMoviesCommand.Execute(null);
+            
         }
     }
 }
