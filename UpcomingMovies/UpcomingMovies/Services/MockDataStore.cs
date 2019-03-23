@@ -68,7 +68,7 @@ namespace UpcomingMovies.Services
                     var content = await response.Content.ReadAsStringAsync();
                     var moviesResponse = JsonConvert.DeserializeObject<MoviesResponse>(content);
                     items = new List<Movie>();
-                    moviesResponse.results.ForEach(movie => items.Add(new Movie()
+                    moviesResponse.Results.ForEach(movie => items.Add(new Movie()
                     {
                         Id = movie.Id,
                         GenreIds = movie.GenreIds,
