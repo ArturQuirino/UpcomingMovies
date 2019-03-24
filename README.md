@@ -4,7 +4,7 @@ This app is able to list the upcoming movies and its details!
 
 ## Build
 There are no specific requirements to build and run this project. You just need to have Xamarin installed and a device to run.
-Although this application was tested only on Android, it should also works fine on iOS.
+Although this application was tested only on Android, it should also work fine on iOS.
 
 ### Third party libraries
 This project used those libraries:
