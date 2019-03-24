@@ -33,7 +33,7 @@ namespace UpcomingMovies.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Movie;
+            Movie item = args.SelectedItem as Movie;
             if (item == null)
                 return;
 

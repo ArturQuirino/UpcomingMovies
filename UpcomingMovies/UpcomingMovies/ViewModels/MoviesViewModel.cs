@@ -32,7 +32,7 @@ namespace UpcomingMovies.ViewModels
             LoadMoviesCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
-        async Task ExecuteLoadItemsCommand()
+        public async Task ExecuteLoadItemsCommand()
         {
             if (IsBusy)
                 return;
@@ -65,7 +65,7 @@ namespace UpcomingMovies.ViewModels
             }
         }
 
-        private async Task LoadGenres()
+        public async Task LoadGenres()
         {
             try
             {
