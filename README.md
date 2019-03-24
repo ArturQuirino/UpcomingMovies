@@ -13,3 +13,11 @@ This project used those libraries:
 * Polly - Polly is a library that allows developers to express resilience and transient fault handling policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback in a fluent and thread-safe manner. It was used to increase resilience in HTTP requests.
 
 * Refit - The automatic type-safe REST library for Xamarin and .NET.  It turns your REST API into a live interface that makes easier to manipulate Rest requests.
+
+## Testing
+There are some unit tests in the UpcomingMovies.Test Project. Those tests are simple, just to exemplify how the application should be tested. They are unit, so they are quick and use mocks to not depend on integrations
+
+### Third party libraries
+This test project used those libraries:
+
+* Moq - This library was used to mock the Services allowing the tests to be unit.
