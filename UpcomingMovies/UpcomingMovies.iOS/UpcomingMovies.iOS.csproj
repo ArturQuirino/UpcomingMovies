@@ -141,4 +141,13 @@
       <Name>UpcomingMovies</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\artur_static.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\artur_static%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\artur_static%403x.png" />
+  </ItemGroup>
 </Project>
