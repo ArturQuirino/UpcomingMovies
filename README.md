@@ -15,9 +15,18 @@ This project used those libraries:
 * Refit - The automatic type-safe REST library for Xamarin and .NET.  It turns your REST API into a live interface that makes easier to manipulate Rest requests.
 
 ## Testing
-There are some unit tests in the UpcomingMovies.Test Project. Those tests are simple, just to exemplify how the application should be tested. They are unit, so they are quick and use mocks to not depend on integrations
+There are some tests in the Test Projects. Those tests are simple, just to exemplify how the application should be tested. 
 
-### Third party libraries
+### Unit Tests
+There are some unit tests in the UpcomingMovies.UnitTest project.
+They are unit, so they are quick and use mocks to not depend on integrations
+
+#### Third party libraries
 This test project used those libraries:
 
 * Moq - This library was used to mock the Services allowing the tests to be unit.
+
+### Integration Tests
+There are some integration tests in the UpcomingMovies.IntegrationTest project.
+They exist to test the business logic integrated with the API. If the API is offline, for example, the test will fail. 
+As they depend on external resources, they might not be so fast.
