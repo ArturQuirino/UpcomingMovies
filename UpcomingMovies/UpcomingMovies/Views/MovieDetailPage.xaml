@@ -4,15 +4,15 @@
              x:Class="UpcomingMovies.Views.MovieDetailPage"
              Title="{Binding Title}">
     <ScrollView>
-        <StackLayout Spacing="20" Padding="15">
+        <StackLayout Spacing="6" Padding="15">
             <Image Source="{Binding Item.PosterPath}"
                HeightRequest="300"/>
             <Label Text="Title:" FontSize="Medium" />
-            <Label Text="{Binding Item.Title}" FontSize="Small"/>
+            <Label Text="{Binding Item.Title}" FontSize="Small" Margin="0, 0, 0, 10"/>
             <Label Text="Overview:" FontSize="Medium" />
-            <Label Text="{Binding Item.Overview}" FontSize="Small"/>
+            <Label Text="{Binding Item.Overview}" FontSize="Small" Margin="0, 0, 0, 10"/>
             <Label Text="Genre:" FontSize="Medium" />
-            <Label Text="{Binding Item.GenreNames}" FontSize="Small" />
+            <Label Text="{Binding Item.GenreNames}" FontSize="Small" Margin="0, 0, 0, 10"/>
             <Label Text="Release Date:" FontSize="Medium" />
             <Label Text="{Binding Item.ReleaseDate}" FontSize="Small"/>
         </StackLayout>
