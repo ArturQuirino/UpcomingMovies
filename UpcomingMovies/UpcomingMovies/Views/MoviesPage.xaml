@@ -4,16 +4,6 @@
              x:Class="UpcomingMovies.Views.MoviesPage"
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="add.png"/>
-                </OnPlatform>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
-
     <StackLayout>
         <ListView x:Name="MoviesListView"
                 ItemsSource="{Binding Movies}"
@@ -27,23 +17,29 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
                             <Image Source="{Binding PosterPath}"
-                                   HeightRequest="200">
+                                   HeightRequest="200"
+                                   Margin="10, 0, 0, 0"
+                                   Grid.Column="0">
                             </Image>
-                            <Label Text="{Binding Title}" 
-                                LineBreakMode="NoWrap" 
+                            <StackLayout Padding="10"
+                                         Grid.Column="1">
+                                <Label Text="{Binding Title}"
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                            <Label Text="{Binding ReleaseDate}" 
-                                LineBreakMode="NoWrap"
+                                <Label Text="{Binding ReleaseDate}"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-                            <Label Text="{Binding GenreNames}" 
-                                LineBreakMode="NoWrap"
+                                <Label Text="{Binding GenreNames}"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-                        </StackLayout>
+                            </StackLayout>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

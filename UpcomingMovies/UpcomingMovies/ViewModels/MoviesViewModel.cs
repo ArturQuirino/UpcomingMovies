@@ -107,9 +107,9 @@ namespace UpcomingMovies.ViewModels
                 };
                 movie.GenreIds.ForEach(id =>
                 {
-                    movie.GenreNames = $"{movie.GenreNames} {Genres.FirstOrDefault(genre => genre.Id == id)?.Name},";
+                    movie.GenreNames = $"{movie.GenreNames}{Genres.FirstOrDefault(genre => genre.Id == id)?.Name}, ";
                 });
-                movie.GenreNames = movie.GenreNames.Substring(0, movie.GenreNames.Length - 1);
+                movie.GenreNames = movie.GenreNames.Substring(0, movie.GenreNames.Length - 2);
                 Movies.Add(movie);
             }
 
