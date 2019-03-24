@@ -10,9 +10,9 @@ namespace UpcomingMovies.Services.Implementations
 {
     public class MoviesService : IMoviesService
     {
-        public async Task<MoviesResponse> GetUpcomingMovies()
+        public async Task<MoviesResponse> GetUpcomingMovies(int page)
         {
-            return await MoviesRepository.Get().GetUpcomingMovies();
+            return await MoviesRepository.Get().GetUpcomingMovies(page);
         }
 
         public async Task<GenresResponse> GetGenres()

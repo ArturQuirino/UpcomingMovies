@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UpcomingMovies.ApiAccess;
 using UpcomingMovies.ApiAccess.Refit;
 using UpcomingMovies.Models.Responses;
+using UpcomingMovies.Utils;
 
 namespace UpcomingMovies.Repositories
 {
@@ -21,7 +22,7 @@ namespace UpcomingMovies.Repositories
             return _instance;
         }
 
-        public async Task<MoviesResponse> GetUpcomingMovies()
+        public async Task<MoviesResponse> GetUpcomingMovies(int page)
         {
             var response = await Policy
              .Handle<WebException>()
@@ -31,7 +32,7 @@ namespace UpcomingMovies.Repositories
                sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
              )
              .ExecuteAsync(async () =>
-                   await MoviesApiAcess.GetClientApi<IMoviesRefit>().GetUpcomingMovies()
+                   await MoviesApiAcess.GetClientApi<IMoviesRefit>().GetUpcomingMovies(Constants.API_KEY, page.ToString())
               );
 
             return response;
@@ -47,7 +48,7 @@ namespace UpcomingMovies.Repositories
                sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
              )
              .ExecuteAsync(async () =>
-                   await MoviesApiAcess.GetClientApi<IMoviesRefit>().GetGenres()
+                   await MoviesApiAcess.GetClientApi<IMoviesRefit>().GetGenres(Constants.API_KEY)
               );
 
             return response;

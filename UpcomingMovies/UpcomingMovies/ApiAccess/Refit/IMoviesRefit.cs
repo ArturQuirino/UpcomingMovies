@@ -9,9 +9,17 @@ namespace UpcomingMovies.ApiAccess.Refit
 {
     public interface IMoviesRefit
     {
-        [Get("/movie/upcoming?api_key=1f54bd990f1cdfb230adb312546d765d&language=en-US&page=1&region=us")]
-        Task<MoviesResponse> GetUpcomingMovies();
-        [Get("/genre/movie/list?api_key=1f54bd990f1cdfb230adb312546d765d&language=en-US")]
-        Task<GenresResponse> GetGenres();
+        [Get("/movie/upcoming?api_key={apiKey}&language={language}&page={page}&region={region}")]
+        Task<MoviesResponse> GetUpcomingMovies(
+            [AliasAs("apikey")]string apikey,
+            [AliasAs("page")]string page,
+            [AliasAs("language")]string language = "en-US",
+            [AliasAs("region")]string region = "us"
+        );
+        [Get("/genre/movie/list?api_key={apiKey}&language={language}")]
+        Task<GenresResponse> GetGenres(
+            [AliasAs("apikey")]string apikey,
+            [AliasAs("language")]string language = "en-US"
+        );
     }
 }

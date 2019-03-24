@@ -8,7 +8,7 @@ namespace UpcomingMovies.Services.Interfaces
 {
     public interface IMoviesService
     {
-        Task<MoviesResponse> GetUpcomingMovies();
+        Task<MoviesResponse> GetUpcomingMovies(int page);
         Task<GenresResponse> GetGenres();
     }
 }

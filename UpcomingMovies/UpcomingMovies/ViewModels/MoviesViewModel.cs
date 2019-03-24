@@ -10,6 +10,7 @@ using UpcomingMovies.Views;
 using System.Linq;
 using UpcomingMovies.Services.Interfaces;
 using System.Collections.Generic;
+using UpcomingMovies.Models.Responses;
 
 namespace UpcomingMovies.ViewModels
 {
@@ -44,26 +45,14 @@ namespace UpcomingMovies.ViewModels
                     await LoadGenres();
 
                 Movies.Clear();
-                var movies = await _moviesService.GetUpcomingMovies();
+                int page = 1;
+                var moviesResponse = await _moviesService.GetUpcomingMovies(page);
+                MapMoviesResponseToMovies(moviesResponse);
 
-                foreach (var movieResponse in movies.Results)
+                for (page = 2; page <= moviesResponse.TotalPages; page++)
                 {
-                    var movie = new Movie()
-                    {
-                        Id = movieResponse.Id,
-                        GenreIds = movieResponse.GenreIds,
-                        Overview = movieResponse.Overview,
-                        PosterPath = $"https://image.tmdb.org/t/p/original/{movieResponse.PosterPath}",
-                        ReleaseDate = movieResponse.ReleaseDate,
-                        Title = movieResponse.Title,
-                        GenreNames = string.Empty,
-                    };
-                    movie.GenreIds.ForEach(id =>
-                    {
-                        movie.GenreNames = $"{movie.GenreNames} {Genres.FirstOrDefault(genre => genre.Id == id)?.Name},";
-                    });
-                    movie.GenreNames = movie.GenreNames.Substring(0, movie.GenreNames.Length - 1);
-                    Movies.Add(movie);
+                    moviesResponse = await _moviesService.GetUpcomingMovies(page);
+                    MapMoviesResponseToMovies(moviesResponse);
                 }
             }
             catch (Exception ex)
@@ -76,7 +65,7 @@ namespace UpcomingMovies.ViewModels
             }
         }
 
-        async Task LoadGenres()
+        private async Task LoadGenres()
         {
             try
             {
@@ -100,6 +89,30 @@ namespace UpcomingMovies.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private void MapMoviesResponseToMovies(MoviesResponse moviesResponse)
+        {
+            foreach (var movieResponse in moviesResponse.Results)
+            {
+                var movie = new Movie()
+                {
+                    Id = movieResponse.Id,
+                    GenreIds = movieResponse.GenreIds,
+                    Overview = movieResponse.Overview,
+                    PosterPath = $"https://image.tmdb.org/t/p/original/{movieResponse.PosterPath}",
+                    ReleaseDate = movieResponse.ReleaseDate,
+                    Title = movieResponse.Title,
+                    GenreNames = string.Empty,
+                };
+                movie.GenreIds.ForEach(id =>
+                {
+                    movie.GenreNames = $"{movie.GenreNames} {Genres.FirstOrDefault(genre => genre.Id == id)?.Name},";
+                });
+                movie.GenreNames = movie.GenreNames.Substring(0, movie.GenreNames.Length - 1);
+                Movies.Add(movie);
+            }
+
         }
     }
 }
