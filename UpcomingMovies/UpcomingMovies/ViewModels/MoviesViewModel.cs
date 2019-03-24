@@ -53,7 +53,7 @@ namespace UpcomingMovies.ViewModels
                         Id = movieResponse.Id,
                         GenreIds = movieResponse.GenreIds,
                         Overview = movieResponse.Overview,
-                        PosterPath = movieResponse.PosterPath,
+                        PosterPath = $"https://image.tmdb.org/t/p/original/{movieResponse.PosterPath}",
                         ReleaseDate = movieResponse.ReleaseDate,
                         Title = movieResponse.Title,
                         GenreNames = string.Empty,

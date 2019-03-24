@@ -3,12 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UpcomingMovies.Views.MovieDetailPage"
              Title="{Binding Title}">
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Title:" FontSize="Medium" />
-        <Label Text="{Binding Item.Title}" FontSize="Small"/>
-        <Label Text="Overview:" FontSize="Medium" />
-        <Label Text="{Binding Item.Overview}" FontSize="Small"/>
-        <Label Text="Release Date:" FontSize="Medium" />
-        <Label Text="{Binding Item.ReleaseDate}" FontSize="Small"/>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="15">
+            <Image Source="{Binding Item.PosterPath}"
+               HeightRequest="300"/>
+            <Label Text="Title:" FontSize="Medium" />
+            <Label Text="{Binding Item.Title}" FontSize="Small"/>
+            <Label Text="Overview:" FontSize="Medium" />
+            <Label Text="{Binding Item.Overview}" FontSize="Small"/>
+            <Label Text="Genre:" FontSize="Medium" />
+            <Label Text="{Binding Item.GenreNames}" FontSize="Small" />
+            <Label Text="Release Date:" FontSize="Medium" />
+            <Label Text="{Binding Item.ReleaseDate}" FontSize="Small"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
